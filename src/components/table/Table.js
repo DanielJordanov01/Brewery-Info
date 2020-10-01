@@ -13,11 +13,6 @@ class Table extends Component {
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
 
                     {this.props.data.map((brewery) => <tr key={brewery['id']}>
                         <td>{brewery.name}</td>

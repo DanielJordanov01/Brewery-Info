@@ -6,7 +6,6 @@ import './App.css'
 
 const baseUrl = 'https://api.openbrewerydb.org'
 const breweriesPerPage = 50
-const getFromNumberOfPages = 2
 
 class App extends Component {
   constructor(props) {
@@ -22,25 +21,24 @@ class App extends Component {
 
   getBreweries = () => {
 
-    let breweries = [];
+    let breweries = []
 
-    // for (let i = 1; i <= getFromNumberOfPages; i++) {
-    //   fetch(this.createUrl(i, breweriesPerPage))
-    //       .then(res => res.json())
-    //       .then(data => breweries.push(data))
-    //       .then(() => {
-    //         if (i === getFromNumberOfPages - 1) {
-    //           const allItems = breweries[0].concat(breweries[1])
-    //           this.setState({
-    //             breweries: [...allItems]
-    //           })
-    //         }
-    //       })
-    // }
+    Promise.all([
+      fetch(this.createUrl(1, breweriesPerPage)).then(value => value.json()),
+      fetch(this.createUrl(2, breweriesPerPage)).then(value => value.json())
+    ])
+        .then((value) => {
+          //json response
+          breweries = value[0].concat(value[1])
+          this.setState({
+            breweries: breweries
+          })
+        })
+        .catch((err) => {
+          console.log(err);
+        });
 
-    fetch(this.createUrl(1, breweriesPerPage))
-        .then(res => res.json())
-        .then(data => this.setState({breweries: data}))
+
   }
 
   createUrl = (pageNumber, itemsPerPage) => {
