@@ -8,59 +8,68 @@ const baseUrl = 'https://api.openbrewerydb.org'
 const breweriesPerPage = 50
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      breweries: []
+    constructor(props) {
+        super(props);
+        this.state = {
+            breweries: []
+        }
     }
-  }
 
-  componentDidMount() {
-    this.getBreweries();
-  }
+    componentDidMount() {
+        this.getBreweries();
+    }
 
-  getBreweries = () => {
+    getBreweries = () => {
+        this.makeRequest();
+    }
 
-    let breweries = []
+    sort = (sortAttribute) => {
+        let breweries = [...this.state.breweries]
 
-    Promise.all([
-      fetch(this.createUrl(1, breweriesPerPage)).then(value => value.json()),
-      fetch(this.createUrl(2, breweriesPerPage)).then(value => value.json())
-    ])
-        .then((value) => {
-          //json response
-          breweries = value[0].concat(value[1])
-          this.setState({
-            breweries: breweries
-          })
+        breweries.sort((prev, next) => (prev[sortAttribute] > next[sortAttribute]) ? 1 : (next[sortAttribute] > prev[sortAttribute]) ? -1 : 0)
+
+        console.log(breweries)
+    }
+
+    makeRequest() {
+        let breweries = []
+
+        Promise.all([
+            fetch(this.createUrl(1, breweriesPerPage)).then(value => value.json()),
+            fetch(this.createUrl(2, breweriesPerPage)).then(value => value.json())
+        ])
+            .then((value) => {
+                //json response
+                breweries = value[0].concat(value[1])
+                this.setState({
+                    breweries: breweries
+                })
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
+    createUrl = (pageNumber, itemsPerPage) => {
+        const url = buildUrl(baseUrl, {
+            path: 'breweries',
+            queryParams: {
+                page: pageNumber,
+                per_page: itemsPerPage
+            }
         })
-        .catch((err) => {
-          console.log(err);
-        });
+
+        return url
+    }
 
 
-  }
-
-  createUrl = (pageNumber, itemsPerPage) => {
-    const url = buildUrl(baseUrl, {
-      path: 'breweries',
-      queryParams: {
-        page: pageNumber,
-        per_page: itemsPerPage
-      }
-    })
-
-    return url
-  }
-
-
-  render() {
-    return (
-        <div className="App container">
-          <Table data={this.state.breweries} />
-        </div>
-    );
-  }
+    render() {
+        return (
+            <div className="App container">
+                <Table data={this.state.breweries}/>
+            </div>
+        );
+    }
 }
 
 export default App;

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import SortButton from "../sortButton/SortButton";
 
 class Table extends Component {
     render() {
@@ -7,9 +8,18 @@ class Table extends Component {
                 <table className="table table-dark">
                     <thead>
                     <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Type</th>
-                        <th scope="col">State</th>
+                        <th scope="col">
+                            Name
+                            <SortButton />
+                        </th>
+                        <th scope="col">
+                            Type
+                            <SortButton />
+                        </th>
+                        <th scope="col">
+                            State
+                            <SortButton />
+                        </th>
                     </tr>
                     </thead>
                     <tbody>
