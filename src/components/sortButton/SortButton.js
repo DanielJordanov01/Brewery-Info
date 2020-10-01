@@ -1,11 +1,16 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { faSort } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const SortButton = () => {
+const SortButton = ({sort, column}) => {
+
+    const handleOnClick = (event) => {
+        sort(column)
+    }
+
     return (
         <div className="d-inline">
-            <FontAwesomeIcon icon={faSort} className="ml-1" />
+            <FontAwesomeIcon onClick={handleOnClick} icon={faSort} className="ml-1" />
         </div>
     );
 }

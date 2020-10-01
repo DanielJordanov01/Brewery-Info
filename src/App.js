@@ -28,7 +28,9 @@ class App extends Component {
 
         breweries.sort((prev, next) => (prev[sortAttribute] > next[sortAttribute]) ? 1 : (next[sortAttribute] > prev[sortAttribute]) ? -1 : 0)
 
-        console.log(breweries)
+        this.setState({
+            breweries: breweries
+        })
     }
 
     makeRequest() {
@@ -66,7 +68,7 @@ class App extends Component {
     render() {
         return (
             <div className="App container">
-                <Table data={this.state.breweries}/>
+                <Table data={this.state.breweries} sort={this.sort}/>
             </div>
         );
     }
