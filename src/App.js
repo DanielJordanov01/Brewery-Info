@@ -86,7 +86,7 @@ class App extends Component {
 
         if (this.state.breweries.length <= 0) {
             return (
-                <div className="">
+                <div className="d-flex flex-column align-items-center m-5">
                     <Loader
                         type="Puff"
                         color="#00BFFF"
@@ -95,11 +95,12 @@ class App extends Component {
                         timeout={3000} //3 secs
 
                     />
+                    <h1 className="h3">Getting Breweries...</h1>
                 </div>
             )
         } else {
             return (
-                <div className="App container">
+                <div className="App container-lg mt-3">
                     <Table data={this.state.breweries} sort={this.sort}/>
                 </div>
             );
