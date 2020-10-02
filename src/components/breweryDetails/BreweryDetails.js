@@ -9,7 +9,7 @@ const BreweryDetails = ({data, closeWindow, isOpen}) => {
             <div className="window jumbotron mt-4 position-fixed border border-light rounded-top shadow p-3 mb-5 bg-white rounded">
                 <h1 className="h1">{data.name}</h1>
                 <p className="lead">{data['website_url']}</p>
-                <hr></hr>
+                <hr />
                 <p>Address: {data.street}, {data.city}, {data.state}</p>
                 <p>Country: {data.country}</p>
                 <p>Post Code: {data['postal_code']}</p>
