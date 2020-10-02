@@ -1,18 +1,30 @@
-import React from 'react';
-import { faSort } from "@fortawesome/free-solid-svg-icons";
+import React, {useState} from 'react';
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const SortButton = ({sort, column}) => {
 
-    const handleOnClick = (event) => {
+    const [arrowToggle, setToggle] = useState(true);
+
+    const handleOnClick = () => {
         sort(column)
+        setToggle(!arrowToggle)
     }
 
-    return (
-        <div className="d-inline">
-            <FontAwesomeIcon onClick={handleOnClick} icon={faSort} className="ml-1" />
-        </div>
-    );
+    if (arrowToggle) {
+        return (
+                <div className="d-inline">
+                    <FontAwesomeIcon onClick={handleOnClick} icon={faArrowUp} className="ml-1" />
+                </div>
+            )
+    } else {
+        return (
+                <div className="d-inline">
+                    <FontAwesomeIcon onClick={handleOnClick} icon={faArrowDown} className="ml-1" />
+                </div>
+            )
+    }
 }
 
 export default SortButton;
