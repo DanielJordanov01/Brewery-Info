@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 
-
 const ErrorMessage = () => {
     return (
         <div className="d-flex flex-column align-items-center m-5">

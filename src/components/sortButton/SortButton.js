@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import './SortButton.css'
 
 const SortButton = ({sort, column}) => {
 
@@ -14,13 +15,13 @@ const SortButton = ({sort, column}) => {
 
     if (arrowToggle) {
         return (
-                <div className="d-inline">
+                <div className="d-inline sortButton">
                     <FontAwesomeIcon onClick={handleOnClick} icon={faArrowUp} className="ml-1" />
                 </div>
             )
     } else {
         return (
-                <div className="d-inline">
+                <div className="d-inline sortButton">
                     <FontAwesomeIcon onClick={handleOnClick} icon={faArrowDown} className="ml-1" />
                 </div>
             )

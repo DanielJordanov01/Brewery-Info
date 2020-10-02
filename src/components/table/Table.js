@@ -1,7 +1,7 @@
 import React from 'react';
 import SortButton from "../sortButton/SortButton";
 
-const Table = ({data, sort}) => {
+const Table = ({data, sort, getBreweryId}) => {
 
     return (
         <div>
@@ -24,11 +24,13 @@ const Table = ({data, sort}) => {
                 </thead>
                 <tbody>
 
-                {data.map((brewery) => <tr key={brewery['id']}>
-                    <td>{brewery.name}</td>
-                    <td>{brewery['brewery_type']}</td>
-                    <td>{brewery.state}</td>
-                </tr>)}
+                {data.map((brewery) =>
+                    <tr onClick={() => getBreweryId(brewery.id)} key={brewery['id']}>
+                        <td>{brewery.name}</td>
+                        <td>{brewery['brewery_type']}</td>
+                        <td>{brewery.state}</td>
+                    </tr>
+                )}
                 </tbody>
             </table>
         </div>

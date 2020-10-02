@@ -3,6 +3,7 @@ import Table from "./components/table/Table";
 import buildUrl from 'build-url';
 import Loader from "./components/loader/Loader";
 import ErrorMessage from "./components/errorMessage/ErrorMessage";
+import BreweryDetails from "./components/breweryDetails/BreweryDetails";
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css'
 
@@ -85,6 +86,14 @@ class App extends Component {
         })
     }
 
+    getBreweryId = (id) => {
+        console.log(id)
+
+        this.setState({
+            clickedBrewery: id
+        })
+    }
+
 
     render() {
 
@@ -96,7 +105,8 @@ class App extends Component {
         } else {
             return (
                 <div className="App container-lg mt-3">
-                    <Table data={this.state.breweries} sort={this.sort}/>
+                    <BreweryDetails data={this.state.breweries[this.state.clickedBrewery]}/>
+                    <Table data={this.state.breweries} sort={this.sort} getBreweryId={this.getBreweryId}/>
                 </div>
             );
         }
