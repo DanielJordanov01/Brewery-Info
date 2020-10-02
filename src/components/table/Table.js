@@ -1,5 +1,6 @@
 import React from 'react';
 import SortButton from "../sortButton/SortButton";
+import './Table.css'
 
 const Table = ({data, sort, getBreweryId}) => {
 
@@ -25,7 +26,7 @@ const Table = ({data, sort, getBreweryId}) => {
                 <tbody>
 
                 {data.map((brewery, index) =>
-                    <tr onClick={() => getBreweryId(index)} key={index}>
+                    <tr className="breweryRow" onClick={() => getBreweryId(index)} key={index}>
                         <td>{brewery.name}</td>
                         <td>{brewery['brewery_type']}</td>
                         <td>{brewery.state}</td>

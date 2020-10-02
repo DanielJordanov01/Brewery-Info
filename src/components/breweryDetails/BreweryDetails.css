@@ -1,3 +1,12 @@
+.window {
+    min-width: 40vw;
+    max-width: 60vw;
+    word-wrap: break-word;
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
 .btn-primary {
     background: #fff;
 }

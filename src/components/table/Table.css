@@ -1,0 +1,7 @@
+.breweryRow {
+    cursor: pointer;
+}
+
+.breweryRow:hover {
+    background: #212529;
+}
