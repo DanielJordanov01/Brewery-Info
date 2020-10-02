@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
+import './App.css'
+
 import Table from "./components/table/Table";
 import buildUrl from 'build-url';
 import Loader from "./components/loader/Loader";
 import ErrorMessage from "./components/errorMessage/ErrorMessage";
 import BreweryDetails from "./components/breweryDetails/BreweryDetails";
-import 'bootstrap/dist/css/bootstrap.css';
-import './App.css'
 
 const BASE_URL = 'https://api.openbrewerydb.org'
 const PATH = 'breweries'

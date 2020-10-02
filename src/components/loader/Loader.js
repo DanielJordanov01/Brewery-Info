@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import LoaderSpinner from 'react-loader-spinner'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 
