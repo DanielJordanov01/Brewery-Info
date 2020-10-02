@@ -24,8 +24,8 @@ const Table = ({data, sort, getBreweryId}) => {
                 </thead>
                 <tbody>
 
-                {data.map((brewery) =>
-                    <tr onClick={() => getBreweryId(brewery.id)} key={brewery['id']}>
+                {data.map((brewery, index) =>
+                    <tr onClick={() => getBreweryId(index)} key={index}>
                         <td>{brewery.name}</td>
                         <td>{brewery['brewery_type']}</td>
                         <td>{brewery.state}</td>

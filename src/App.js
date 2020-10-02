@@ -17,7 +17,9 @@ class App extends Component {
         this.state = {
             breweries: [],
             sortToggle: true,
-            error: false
+            error: false,
+            isWindowOpen: false,
+            clickedBrewery: 0
         }
     }
 
@@ -57,7 +59,8 @@ class App extends Component {
         }
 
         this.setState({
-            breweries: breweries
+            breweries: breweries,
+            isWindowOpen: false
         })
     }
 
@@ -87,13 +90,17 @@ class App extends Component {
     }
 
     getBreweryId = (id) => {
-        console.log(id)
-
         this.setState({
-            clickedBrewery: id
+            clickedBrewery: id,
+            isWindowOpen: true
         })
     }
 
+    closeWindow = () => {
+        this.setState({
+            isWindowOpen: false
+        })
+    }
 
     render() {
 
@@ -105,7 +112,7 @@ class App extends Component {
         } else {
             return (
                 <div className="App container-lg mt-3">
-                    <BreweryDetails data={this.state.breweries[this.state.clickedBrewery]}/>
+                    <BreweryDetails isOpen={this.state.isWindowOpen} closeWindow={this.closeWindow} data={this.state.breweries[this.state.clickedBrewery]}/>
                     <Table data={this.state.breweries} sort={this.sort} getBreweryId={this.getBreweryId}/>
                 </div>
             );
