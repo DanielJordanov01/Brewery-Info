@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import Table from "./components/table/Table";
 import buildUrl from 'build-url';
-import Loader from 'react-loader-spinner'
+import Loader from "./components/loader/Loader";
+import ErrorMessage from "./components/errorMessage/ErrorMessage";
 import 'bootstrap/dist/css/bootstrap.css';
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import './App.css'
 
 const BASE_URL = 'https://api.openbrewerydb.org'
@@ -15,7 +15,8 @@ class App extends Component {
         super(props);
         this.state = {
             breweries: [],
-            sortToggle: true
+            sortToggle: true,
+            error: false
         }
     }
 
@@ -36,6 +37,9 @@ class App extends Component {
                 })
             })
             .catch((err) => {
+                this.setState({
+                    error: true
+                })
                 console.log(err);
             });
     }
@@ -84,20 +88,11 @@ class App extends Component {
 
     render() {
 
-        if (this.state.breweries.length <= 0) {
-            return (
-                <div className="d-flex flex-column align-items-center m-5">
-                    <Loader
-                        type="Puff"
-                        color="#00BFFF"
-                        height={100}
-                        width={100}
-                        timeout={3000} //3 secs
-
-                    />
-                    <h1 className="h3">Getting Breweries...</h1>
-                </div>
-            )
+        if (this.state.error) {
+            return <ErrorMessage />
+        }
+        else if (this.state.breweries.length <= 0) {
+            return <Loader />
         } else {
             return (
                 <div className="App container-lg mt-3">
