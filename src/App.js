@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import Table from "./components/table/Table";
 import buildUrl from 'build-url';
+import Loader from 'react-loader-spinner'
 import 'bootstrap/dist/css/bootstrap.css';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import './App.css'
 
 const BASE_URL = 'https://api.openbrewerydb.org'
@@ -13,7 +15,7 @@ class App extends Component {
         super(props);
         this.state = {
             breweries: [],
-            sortToggler: true
+            sortToggle: true
         }
     }
 
@@ -81,11 +83,27 @@ class App extends Component {
 
 
     render() {
-        return (
-            <div className="App container">
-                <Table data={this.state.breweries} sort={this.sort}/>
-            </div>
-        );
+
+        if (this.state.breweries.length <= 0) {
+            return (
+                <div className="">
+                    <Loader
+                        type="Puff"
+                        color="#00BFFF"
+                        height={100}
+                        width={100}
+                        timeout={3000} //3 secs
+
+                    />
+                </div>
+            )
+        } else {
+            return (
+                <div className="App container">
+                    <Table data={this.state.breweries} sort={this.sort}/>
+                </div>
+            );
+        }
     }
 }
 
