@@ -48,36 +48,11 @@ class App extends Component {
             });
     }
 
-    sort = (sortAttribute) => {
-        let breweries = [...this.state.breweries]
-
-        if (this.state.toggler) {
-            breweries.sort((first, second) => this.compare(first[sortAttribute], second[sortAttribute]))
-            this.setState({toggler: !this.state.toggler})
-        } else {
-            breweries.sort((first, second) => this.compare(second[sortAttribute], first[sortAttribute]))
-            this.setState({toggler: !this.state.toggler})
-        }
-
+    setSorted = (breweries) => {
         this.setState({
             breweries: breweries,
             isWindowOpen: false
         })
-    }
-
-    compare = (prev, next) => {
-        if (prev === next) {
-            return 0
-        } else if (prev === null) {
-            return 1
-        } else if (next === null){
-            return -1
-        }
-        else if (prev > next) {
-            return 1
-        } else {
-            return -1
-        }
     }
 
     createUrl = (pageNumber, itemsPerPage) => {
@@ -113,7 +88,7 @@ class App extends Component {
             return (
                 <div className="App container-lg mt-3">
                     <BreweryDetails isOpen={this.state.isWindowOpen} closeWindow={this.closeWindow} data={this.state.breweries[this.state.clickedBrewery]}/>
-                    <Table data={this.state.breweries} sort={this.sort} getBreweryId={this.getBreweryId}/>
+                    <Table data={this.state.breweries} setSorted={this.setSorted} getBreweryId={this.getBreweryId}/>
                 </div>
             );
         }

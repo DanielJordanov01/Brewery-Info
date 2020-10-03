@@ -2,7 +2,7 @@ import React from 'react';
 import SortButton from "../sortButton/SortButton";
 import './Table.css'
 
-const Table = ({data, sort, getBreweryId}) => {
+const Table = ({data, setSorted, getBreweryId}) => {
 
     return (
         <div>
@@ -11,15 +11,15 @@ const Table = ({data, sort, getBreweryId}) => {
                 <tr>
                     <th data-test-id="name" scope="col">
                         Name
-                        <SortButton sort={sort} column="name"/>
+                        <SortButton setSorted={setSorted} column="name" breweries={data}/>
                     </th>
                     <th scope="col">
                         Type
-                        <SortButton sort={sort} column="brewery_type"/>
+                        <SortButton setSorted={setSorted} column="brewery_type" breweries={data}/>
                     </th>
                     <th scope="col">
                         State
-                        <SortButton sort={sort} column="state"/>
+                        <SortButton setSorted={setSorted} column="state" breweries={data}/>
                     </th>
                 </tr>
                 </thead>

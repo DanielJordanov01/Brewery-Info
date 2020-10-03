@@ -47,39 +47,6 @@ describe('createUrl(pageNumber, itemsPerPage)', () => {
 })
 
 
-describe('compare(prev, next)', () => {
-
-    test('compare returns 1', () => {
-        const expected = 1
-
-        // When
-        const given = instance.compare(2, 1)
-
-        // Assert
-        expect(given).toBe(expected)
-    })
-
-    test('compare returns -1', () => {
-        const expected = -1
-
-        // When
-        const given = instance.compare(1, 2)
-
-        // Assert
-        expect(given).toBe(expected)
-    })
-
-    test('compare returns 0', () => {
-        const expected = 0
-
-        // When
-        const given = instance.compare(1, 1)
-
-        //Assert
-        expect(given).toBe(expected)
-    })
-})
-
 test('closeWindow', () => {
     const expected = false
 
