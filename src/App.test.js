@@ -79,3 +79,28 @@ describe('compare(prev, next)', () => {
         expect(given).toBe(expected)
     })
 })
+
+test('closeWindow', () => {
+    const expected = false
+
+    // When
+    instance.closeWindow()
+    const given = wrapper.state().isWindowOpen
+
+    // Assert
+    expect(given).toBe(expected)
+})
+
+test('getBreweryId(id)', () => {
+    const expectedId = 1
+    const expectedWindowState = true
+
+    // When
+    instance.getBreweryId(1)
+    const givenId = wrapper.state().clickedBrewery
+    const givenWindowState = wrapper.state().isWindowOpen
+
+    // Assert
+    expect(expectedId).toBe(givenId)
+    expect(expectedWindowState).toBe(givenWindowState)
+})

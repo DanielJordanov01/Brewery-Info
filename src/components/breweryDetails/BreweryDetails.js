@@ -14,7 +14,7 @@ const BreweryDetails = ({data, closeWindow, isOpen}) => {
                 <p>Country: {data.country}</p>
                 <p>Post Code: {data['postal_code']}</p>
                 <p>Phone: {data.phone}</p>
-                <p onClick={closeWindow} className="btn btn-dark btn-lg" role="button">Close</p>
+                <p id="button" onClick={closeWindow} className="btn btn-dark btn-lg" role="button">Close</p>
             </div>
         </Animated>
     );
