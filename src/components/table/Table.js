@@ -9,7 +9,7 @@ const Table = ({data, sort, getBreweryId}) => {
             <table className="table table-dark">
                 <thead>
                 <tr>
-                    <th scope="col">
+                    <th data-test-id="name" scope="col">
                         Name
                         <SortButton sort={sort} column="name"/>
                     </th>

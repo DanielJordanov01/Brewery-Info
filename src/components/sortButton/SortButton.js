@@ -16,13 +16,13 @@ const SortButton = ({sort, column}) => {
     if (arrowToggle) {
         return (
                 <div className="d-inline sortButton">
-                    <FontAwesomeIcon onClick={handleOnClick} icon={faArrowUp} className="ml-1" />
+                    <FontAwesomeIcon data-test-id="arrowUp" onClick={handleOnClick} icon={faArrowUp} className="ml-1" />
                 </div>
             )
     } else {
         return (
                 <div className="d-inline sortButton">
-                    <FontAwesomeIcon onClick={handleOnClick} icon={faArrowDown} className="ml-1" />
+                    <FontAwesomeIcon data-test-id="arrowDown" onClick={handleOnClick} icon={faArrowDown} className="ml-1" />
                 </div>
             )
     }
