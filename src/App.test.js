@@ -2,11 +2,8 @@ import React from "react";
 import App from "./App";
 import ErrorMessage from "./components/errorMessage/ErrorMessage";
 import Loader from "./components/loader/Loader";
-import Enzyme, { shallow } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
-import '@testing-library/jest-dom'
+import {shallow} from './TestConfiguration'
 
-Enzyme.configure({adapter: new Adapter()})
 
 // Given
 const wrapper = shallow(<App />)

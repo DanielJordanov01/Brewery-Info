@@ -1,10 +1,7 @@
 import React from "react";
 import SortButton from "./SortButton";
-import Enzyme, {shallow} from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
 import '@testing-library/jest-dom'
-
-Enzyme.configure({adapter: new Adapter()})
+import {shallow} from '../../TestConfiguration'
 
 const setSorted = jest.fn()
 
