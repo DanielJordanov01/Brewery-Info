@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/DanielJordanov01/Brewery-Info.svg?branch=master)](https://travis-ci.org/DanielJordanov01/Brewery-Info)
 
+![](brewery_info.gif)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
