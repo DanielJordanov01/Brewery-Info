@@ -3,7 +3,7 @@ import {faArrowDown} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import './SortButton.css'
 import React, {Component} from 'react';
-import {store} from "../../store/index";
+import {store} from "../../store/index.js";
 import {setSortedBreweries} from "../../actions";
 
 class SortButton extends Component {
