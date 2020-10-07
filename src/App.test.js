@@ -3,7 +3,7 @@ import App from "./App";
 import ErrorMessage from "./components/errorMessage/ErrorMessage";
 import Loader from "./components/loader/Loader";
 import {shallow} from './TestConfiguration'
-import {store} from "./store";
+import {store} from "./store/index";
 import {setError} from "./actions";
 import {setBreweries} from "./actions";
 
