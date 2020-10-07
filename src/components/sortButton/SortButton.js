@@ -3,6 +3,8 @@ import {faArrowDown} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import './SortButton.css'
 import React, {Component} from 'react';
+import {store} from "../../store";
+import {setSortedBreweries} from "../../actions";
 
 class SortButton extends Component {
     state = {
@@ -20,7 +22,7 @@ class SortButton extends Component {
             this.setState({arrowToggle: true})
         }
 
-        this.props.setSorted(sortedBreweries)
+        store.dispatch(setSortedBreweries(sortedBreweries))
 
         return sortedBreweries
     }

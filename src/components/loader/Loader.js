@@ -2,7 +2,6 @@ import React from 'react';
 import LoaderSpinner from 'react-loader-spinner'
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 
-
 const Loader = () => {
     return (
         <div className="d-flex flex-column align-items-center m-5">

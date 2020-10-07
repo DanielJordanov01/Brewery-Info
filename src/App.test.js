@@ -3,16 +3,20 @@ import App from "./App";
 import ErrorMessage from "./components/errorMessage/ErrorMessage";
 import Loader from "./components/loader/Loader";
 import {shallow} from './TestConfiguration'
+import {store} from "./store";
+import {setError} from "./actions";
+import {setBreweries} from "./actions";
 
 
 // Given
-const wrapper = shallow(<App />)
+let wrapper = shallow(<App />)
 const instance = wrapper.instance()
 
 describe('renders correct component', () => {
     test('renders ErroMessage if there is error', () => {
         // When
-        wrapper.setState({error: true})
+        store.dispatch(setError(true))
+        wrapper = shallow(<App />)
 
         // Assert
         expect(wrapper.contains(<ErrorMessage />)).toBeTruthy()
@@ -20,10 +24,9 @@ describe('renders correct component', () => {
 
     test('renders Loader if there is no error and state.breweries is empty', () => {
         // When
-        wrapper.setState({
-                error: false,
-                breweries: []
-            })
+        store.dispatch(setError(false))
+        store.dispatch(setBreweries([]))
+        wrapper = shallow(<App />)
 
         // Assert
         expect(wrapper.contains(<Loader />)).toBeTruthy()
@@ -41,30 +44,4 @@ describe('createUrl(pageNumber, itemsPerPage)', () => {
         // Assert
         expect(given).toBe(expected)
     })
-})
-
-
-test('closeWindow', () => {
-    const expected = false
-
-    // When
-    instance.closeWindow()
-    const given = wrapper.state().isWindowOpen
-
-    // Assert
-    expect(given).toBe(expected)
-})
-
-test('getBreweryId(id)', () => {
-    const expectedId = 1
-    const expectedWindowState = true
-
-    // When
-    instance.getBreweryId(1)
-    const givenId = wrapper.state().clickedBrewery
-    const givenWindowState = wrapper.state().isWindowOpen
-
-    // Assert
-    expect(expectedId).toBe(givenId)
-    expect(expectedWindowState).toBe(givenWindowState)
 })
